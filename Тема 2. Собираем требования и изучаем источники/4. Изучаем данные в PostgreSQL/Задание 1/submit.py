@@ -1,6 +1,7 @@
 import os
 import requests
 
+
 def submit(rlz_file, t_code):
     full_lesson_path = os.path.dirname(os.path.abspath(__file__))
     user_file = f'{full_lesson_path}/{rlz_file}'
@@ -13,10 +14,11 @@ def submit(rlz_file, t_code):
         json={
             "code": user_code,
             "test": t_code
-            })
+        })
 
-    print(r.json()['stderr'].replace('/app/__test.py',rlz_file))
+    print(r.json()['stderr'].replace('/app/__test.py', rlz_file))
     print(r.json()['stdout'])
+
 
 if __name__ == '__main__':
     submit(
