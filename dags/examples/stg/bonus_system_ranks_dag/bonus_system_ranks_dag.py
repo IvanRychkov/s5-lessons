@@ -27,7 +27,7 @@ def sprint5_example_stg_bonus_system_ranks_dag():
     def load_ranks():
         # создаем экземпляр класса, в котором реализована логика.
         rest_loader = RankLoader(origin_pg_connect, dwh_pg_connect, log)
-        rest_loader.load_ranks()  # Вызываем функцию, которая перельет данные.
+        rest_loader.pg_load_ranks()  # Вызываем функцию, которая перельет данные.
 
     # Инициализируем объявленные таски.
     ranks_dict = load_ranks()
