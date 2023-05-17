@@ -33,3 +33,10 @@ with dag:
         task_id='load_products',
         sql='./sql/dm_products.sql',
     )
+
+    load_orders = PostgresOperator(
+        task_id='load_orders',
+        sql='./sql/dm_orders.sql',
+    )
+
+    [load_users, load_timestamps, load_restaurants] >> load_products >> load_orders
