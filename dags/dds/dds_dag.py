@@ -39,4 +39,5 @@ with dag:
         sql='./sql/dm_orders.sql',
     )
 
-    [load_users, load_timestamps, load_restaurants] >> load_products >> load_orders
+    [load_users, load_timestamps, load_restaurants] >> load_orders
+    load_restaurants >> load_products
