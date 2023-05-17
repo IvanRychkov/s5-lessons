@@ -26,5 +26,10 @@ with dag:
 
     load_timestamps = PostgresOperator(
         task_id='load_timestamps',
-        sql='./sql/dm_timestamps.sql'
+        sql='./sql/dm_timestamps.sql',
+    )
+
+    load_products = PostgresOperator(
+        task_id='load_products',
+        sql='./sql/dm_products.sql',
     )
