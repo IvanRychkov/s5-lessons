@@ -8,7 +8,6 @@ insert
 into dds.dm_orders (user_id, restaurant_id, timestamp_id, order_key, order_status)
 select u.id,
        p.restaurant_id,
-       -- rest
        ts.id,
        order_id,
        j ->> 'final_status'
