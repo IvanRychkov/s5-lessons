@@ -1,6 +1,4 @@
-delete
-from dds.dm_orders
-where true;
+truncate table dds.dm_orders cascade;
 alter sequence dds.dm_orders_id_seq restart with 1;
 with orders as (select object_id as order_id, (object_value::json #>> '{}')::json as j, update_ts
                 from stg.ordersystem_orders)

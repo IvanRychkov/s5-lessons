@@ -1,6 +1,4 @@
-delete
-from dds.dm_timestamps
-where true;
+truncate table dds.dm_timestamps cascade;
 alter sequence dds.dm_timestamps_id_seq restart with 1;
 with jsoned as (select (object_value ::json #>> '{}')::json as j
                 from stg.ordersystem_orders),

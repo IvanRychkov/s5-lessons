@@ -1,6 +1,4 @@
-delete
-from dds.dm_restaurants
-where true;
+truncate table dds.dm_restaurants cascade;
 alter sequence dds.dm_restaurants_id_seq restart with 1;
 with jsoned as (select (object_value ::json #>> '{}')::json as j
                 from stg.ordersystem_restaurants)

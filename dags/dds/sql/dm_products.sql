@@ -1,6 +1,4 @@
-delete
-from dds.dm_products
-where true;
+truncate table dds.dm_products cascade;
 alter sequence dds.dm_products_id_seq restart with 1;
 with products as (select object_id as restaurant_id, json_array_elements(object_value::json -> 'menu') as p, update_ts
                   from stg.ordersystem_restaurants)
