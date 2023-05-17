@@ -18,3 +18,13 @@ with dag:
         task_id='load_users',
         sql='./sql/dm_users.sql',
     )
+
+    load_restaurants = PostgresOperator(
+        task_id='load_restaurants',
+        sql='./sql/dm_restaurants.sql',
+    )
+
+    load_timestamps = PostgresOperator(
+        task_id='load_timestamps',
+        sql='./sql/dm_timestamps.sql'
+    )
