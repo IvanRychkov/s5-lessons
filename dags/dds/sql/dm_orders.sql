@@ -12,5 +12,4 @@ select u.id,
 from orders o
          join dds.dm_timestamps ts on (o.j ->> 'date')::timestamp = ts.ts
          join dds.dm_products p on o.j #>> '{order_items,0,id}' = p.product_id
-    and ts.ts >= p.active_from and ts.ts < p.active_to
          join dds.dm_users u on o.j -> 'user' ->> 'id' = u.user_id
