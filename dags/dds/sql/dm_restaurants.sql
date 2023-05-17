@@ -11,4 +11,3 @@ select j ->> '_id',
        (j ->> 'update_ts')::timestamp,
        '2099-12-31 00:00:00.000'
 from jsoned;
-
