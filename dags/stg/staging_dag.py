@@ -1,4 +1,4 @@
-from pendulum import datetime
+from pendulum import datetime, parse
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from lib.staging_utils import (
@@ -102,10 +102,11 @@ with dag:
                     from stg.srv_wf_settings
                     where workflow_key = '{workflow_key}'
                 """).fetchone()
-                print(f'last_{filter_by}:', last_loaded_ts)
+
                 # Настраиваем фильтр для монго
-                mongo_filter = {filter_by: {'$gt': last_loaded_ts[0]}} if last_loaded_ts else None
-    
+                mongo_filter = {filter_by: {'$gt': parse(last_loaded_ts[0])}} if last_loaded_ts else None
+                print('filtering mongo objects by', mongo_filter)
+
                 # Пишем
                 write = get_mongo_writer(target_table_name, pg_conn)
                 obj_count = 0
