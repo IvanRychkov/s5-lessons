@@ -1,5 +1,4 @@
 from airflow import DAG
-from airflow.operators.python import PythonOperator
 from airflow.providers.postgres.operators.postgres import PostgresOperator
 from pendulum import datetime
 
